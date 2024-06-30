@@ -123,7 +123,7 @@ images = [
 
     ("output_images/corrected_image.jpg", "")
 ]
-save_images_to_docx(images, "output_images/images.docx")
+save_images_to_docx(images, "docs/test/test.docx")
 
 # Отображение изображений
 plt.figure(figsize=(15, 5))
