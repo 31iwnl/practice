@@ -43,7 +43,7 @@ def find_table_coordinates(image_path):
     for contour in contours:
         x, y, w, h = cv2.boundingRect(contour)
         aspect_ratio = 15 * w / float(h)
-        if (w > 250 or 200 < h > 150) and aspect_ratio > 55:
+        if (w > 250 or  h > 150) and aspect_ratio > 25:
             coordinates.append((x, y, x + w, y + h))
     return coordinates
 
