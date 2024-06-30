@@ -56,7 +56,7 @@ def detect_orientation(image):
 def correct_orientation(image):
     # Определение и коррекция ориентации изображения
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(gray, 100, 200)
+    edges = cv2.Canny(gray, 250, 200)
     lines = cv2.HoughLines(edges, 1, np.pi / 180, 200)
     if lines is not None:
         angles = [np.degrees(theta) for rho, theta in lines[:, 0]]
@@ -67,7 +67,7 @@ def correct_orientation(image):
         (h, w) = image.shape[:2]
         center = (w // 2, h // 2)
         M = cv2.getRotationMatrix2D(center, angle_to_rotate, 1.0)
-        rotated = cv2.warpAffine(image, M, (w, h))
+        rotated = cv2.warpAffine(image, M, (w, h) , borderValue=(255,255,255))
         return rotated
     else:
         return image
